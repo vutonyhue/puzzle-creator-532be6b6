@@ -57,6 +57,7 @@ export default {
         'gradient-primary': 'var(--gradient-primary)',
         'gradient-secondary': 'var(--gradient-secondary)',
         'gradient-bg': 'var(--gradient-bg)',
+        'gradient-shine': 'var(--gradient-shine)',
       },
       boxShadow: {
         'tile': 'var(--shadow-tile)',
