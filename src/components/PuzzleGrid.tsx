@@ -108,21 +108,26 @@ export const PuzzleGrid = () => {
 
   return (
     <div className="flex flex-col items-center gap-8 w-full max-w-md mx-auto">
-      <div className="text-center space-y-2">
-        <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-          Puzzle Game
+      <div className="text-center space-y-2 animate-[float_4s_ease-in-out_infinite]">
+        <h1 className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent drop-shadow-lg animate-[glow-pulse_3s_ease-in-out_infinite]">
+          Puzzle Game 3D
         </h1>
-        <p className="text-muted-foreground">
-          Arrange the numbers in order from 1 to 8
+        <p className="text-muted-foreground text-lg">
+          ✨ Arrange the numbers in order from 1 to 8 ✨
         </p>
       </div>
 
       <GameStats moves={moves} time={time} />
 
       <div 
-        className="grid gap-2 w-full p-4 bg-card rounded-2xl shadow-card"
-        style={{ gridTemplateColumns: `repeat(${GRID_SIZE}, 1fr)` }}
+        className="grid gap-3 w-full p-6 bg-card/50 backdrop-blur-xl rounded-3xl shadow-card relative overflow-hidden border border-primary/20"
+        style={{ 
+          gridTemplateColumns: `repeat(${GRID_SIZE}, 1fr)`,
+          transformStyle: 'preserve-3d',
+          perspective: '1000px',
+        }}
       >
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 animate-[glow-pulse_4s_ease-in-out_infinite]" />
         {tiles.map((tile, index) => (
           <PuzzleTile
             key={index}
@@ -138,7 +143,7 @@ export const PuzzleGrid = () => {
         <Button
           onClick={shuffleTiles}
           size="lg"
-          className="bg-gradient-primary hover:opacity-90 transition-opacity shadow-tile"
+          className="bg-gradient-primary hover:opacity-90 hover:scale-105 transition-all shadow-tile border-2 border-primary-glow/30 text-lg transform-gpu hover:-translate-y-1"
         >
           <Shuffle className="w-5 h-5 mr-2" />
           New Game
@@ -147,7 +152,7 @@ export const PuzzleGrid = () => {
           <Button
             variant="outline"
             size="lg"
-            className="border-success text-success hover:bg-success/10"
+            className="border-2 border-success text-success hover:bg-success/20 animate-[glow-pulse_2s_ease-in-out_infinite] shadow-[0_0_20px_hsl(var(--success)/0.5)] hover:scale-105 transition-all text-lg transform-gpu"
           >
             <Trophy className="w-5 h-5 mr-2" />
             Winner!
