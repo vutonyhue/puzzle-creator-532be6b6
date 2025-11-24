@@ -12,44 +12,23 @@ import { endpoint, wallets } from './config/solana';
 import '@rainbow-me/rainbowkit/styles.css';
 import '@solana/wallet-adapter-react-ui/styles.css';
 
-import Auth from "./pages/Auth";
-import Feed from "./pages/Feed";
-import Friends from "./pages/Friends";
-import Profile from "./pages/Profile";
-import Wallet from "./pages/Wallet";
-import Post from "./pages/Post";
+import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={wallets} autoConnect>
-        <WalletModalProvider>
-          <WagmiProvider config={config}>
-            <RainbowKitProvider>
-              <TooltipProvider>
-                <Toaster />
-                <Sonner />
-                <BrowserRouter>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
                   <Routes>
-                    <Route path="/auth" element={<Auth />} />
-                    <Route path="/" element={<Feed />} />
-                    <Route path="/friends" element={<Friends />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/profile/:userId" element={<Profile />} />
-                    <Route path="/wallet" element={<Wallet />} />
-                    <Route path="/post/:postId" element={<Post />} />
+                    <Route path="/" element={<Index />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
-                </BrowserRouter>
-              </TooltipProvider>
-            </RainbowKitProvider>
-          </WagmiProvider>
-        </WalletModalProvider>
-      </WalletProvider>
-    </ConnectionProvider>
+      </BrowserRouter>
+    </TooltipProvider>
   </QueryClientProvider>
 );
 
